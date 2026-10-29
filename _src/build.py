@@ -1,14 +1,14 @@
 """SWO メンテナンス事務局 LP（Ver.1）を組み立てる
 使い方: python3 -I build.py <srcフォルダ> <出力HTML> [--comp]
---comp を付けると、トップの画像エリアに PIXTA 95794004 の見本（透かし入り）を仮に置いた校正PDF用のHTMLを出す
-（見本は出力HTMLと同じフォルダの comp/95794004.jpg を参照）。
+--comp を付けると、トップのスライドショー3枚に PIXTA の見本（透かし入り）を仮に置いた校正PDF用のHTMLを出す
+（見本は出力HTMLと同じフォルダの comp/<PIXTA番号>.jpg を参照、トップのスライド3枚分）。
 納品・確認用URLのHTMLには付けない（見本画像は公開しない）。
 """
 import sys, os, json, re
 
 src, out = sys.argv[1], sys.argv[2]
 comp = '--comp' in sys.argv
-BUILD_TAG = 'swo2026_maintenance_ver1.0 / 2026-10-28'
+BUILD_TAG = 'swo2026_maintenance_ver2.0 / 2026-10-29'
 
 t = open(os.path.join(src, 'template.html'), encoding='utf-8').read()
 css = open(os.path.join(src, 'base_v1.css'), encoding='utf-8').read() + open(os.path.join(src, 'add.css'), encoding='utf-8').read()
@@ -34,17 +34,20 @@ t = rep(t, '{{MORE_WORKS}}', '#works')
 t = rep(t, '{{MORE_FAQ}}', '#faq')
 for k in ('CASE1_IMG', 'CASE2_IMG', 'CASE3_IMG'):
     t = rep(t, '{{%s}}' % k, '')
+# トップのスライドショー3枚（PIXTA 95794004・139166339・79172774）
+TOP = ['95794004', '139166339', '79172774']
+for k, n in enumerate(TOP, 1):
+    if comp:
+        img = (f'<img src="comp/{n}.jpg" alt="仮画像">'
+               f'<span class="comp-badge">仮画像：PIXTA {n} の見本（ご購入後に差し替え）</span>')
+    else:
+        img = ''
+    t = rep(t, '{{TOP_IMG%d}}' % k, img)
 if comp:
-    img = ('<img src="comp/95794004.jpg" alt="仮画像" class="on">'
-           '<span class="comp-badge">仮画像：PIXTA 95794004 の見本（ご購入後に差し替え）</span>')
-    t = rep(t, '{{TOP_IMG}}', img)
     t = rep(t, '/* ===== メンテナンス事務局：ここまで ===== */',
-            '.media-slot img{object-fit:contain;background:#eef2f6;}\n'
             '.comp-badge{position:absolute;left:10px;top:10px;z-index:2;background:var(--red);color:#fff;'
             'font-size:13px;font-weight:800;padding:4px 10px;border-radius:4px;}\n'
             '/* ===== メンテナンス事務局：ここまで ===== */')
-else:
-    t = rep(t, '{{TOP_IMG}}', '')
 assert '{{' not in t, '置き換え残り'
 open(out, 'w', encoding='utf-8').write(t)
 print('built', out, len(t), 'comp' if comp else 'deliver')
