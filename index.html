@@ -1052,6 +1052,9 @@ body{
 .mt-tax{margin:8px 0 0;text-align:right;font-size:14px;font-weight:700;}
 .mt-from{display:inline-block;margin-left:12px;font-weight:900;color:#c4561a;}
 @media (max-width:480px){ .mt-num{font-size:21px;} .mt-plan-free{font-size:12px;padding:2px 6px;} }
+@media (max-width:900px){ .mt-plans{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.mt-plan-ask{white-space:normal;}
+@media (max-width:360px){ .mt-plan{padding:14px 8px;} .mt-num{font-size:19px;} .mt-plan-price{font-size:14px;} .mt-plan-ask{font-size:15px;} }
 /* ===== メンテナンス事務局：ここまで ===== */
 
 </style>
@@ -1214,7 +1217,7 @@ body{
       <li class="mt-plan"><p class="mt-plan-name">3ヶ月プラン</p><p class="mt-plan-price"><span class="mt-num">40,000</span>円／月</p></li>
       <li class="mt-plan"><p class="mt-plan-name">6ヶ月プラン</p><p class="mt-plan-price"><span class="mt-num">35,000</span>円／月</p><p class="mt-plan-free">初月無料サービス</p></li>
       <li class="mt-plan"><p class="mt-plan-name">年間プラン</p><p class="mt-plan-price"><span class="mt-num">25,000</span>円／月</p><p class="mt-plan-free">初月無料サービス</p></li>
-      <li class="mt-plan mt-plan-add"><p class="mt-plan-name">追加費用</p><p class="mt-plan-price mt-plan-ask">相談いたします。</p></li>
+      <li class="mt-plan mt-plan-add"><p class="mt-plan-name">追加費用</p><p class="mt-plan-price mt-plan-ask"><span class="nobr">相談</span><span class="nobr">いたします。</span></p></li>
     </ul>
     <p class="mt-tax">※消費税別</p>
     <div class="mt-scope-grid">
