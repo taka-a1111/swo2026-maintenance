@@ -158,4 +158,7 @@ body{
 @media (max-width:900px){ .mt-plans{grid-template-columns:repeat(2,minmax(0,1fr));} }
 .mt-plan-ask{white-space:normal;}
 @media (max-width:360px){ .mt-plan{padding:14px 8px;} .mt-num{font-size:19px;} .mt-plan-price{font-size:14px;} .mt-plan-ask{font-size:15px;} }
+/* ヘッダーのロゴ（スマホで小さすぎないように） */
+@media (max-width:700px){ .hd-logo-img{height:34px;} }
+@media (max-width:360px){ .hd-logo-img{height:30px;} }
 /* ===== メンテナンス事務局：ここまで ===== */
