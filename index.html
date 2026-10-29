@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD_TAG: swo2026_maintenance_ver1.0 / 2026-10-28 -->
+<!-- BUILD_TAG: swo2026_maintenance_ver2.0 / 2026-10-29 -->
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -1036,6 +1036,22 @@ body{
   .mt-check li{font-size:14.5px;}
 }
 @media (max-width:760px){ .mt-ft-info dt{flex:none;} }
+/* トップのスライドショー */
+.mt-slides{display:block;}
+.mt-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease;}
+.mt-slide.on{opacity:1;}
+.mt-slide img{object-fit:contain;background:#eef2f6;}
+.mt-dots{position:absolute;left:0;right:0;bottom:10px;z-index:3;display:flex;justify-content:center;gap:10px;}
+.mt-dots button{width:11px;height:11px;padding:0;border:2px solid var(--navy);border-radius:50%;background:#fff;cursor:pointer;}
+.mt-dots button.on{background:var(--navy);}
+@media (prefers-reduced-motion:reduce){ .mt-slide{transition:none;} }
+/* 料金（2026-10-29 確定） */
+.mt-num{display:inline-block;font-size:24px;font-weight:900;color:var(--navy);margin-right:2px;}
+.mt-plan-free{display:inline-block;margin:8px 0 0;padding:2px 10px;border-radius:4px;background:var(--red);color:#fff!important;font-size:13px;font-weight:800;}
+.mt-plan-ask{font-size:17px;color:var(--navy);}
+.mt-tax{margin:8px 0 0;text-align:right;font-size:14px;font-weight:700;}
+.mt-from{display:inline-block;margin-left:12px;font-weight:900;color:#c4561a;}
+@media (max-width:480px){ .mt-num{font-size:21px;} .mt-plan-free{font-size:12px;padding:2px 6px;} }
 /* ===== メンテナンス事務局：ここまで ===== */
 
 </style>
@@ -1075,9 +1091,19 @@ body{
           <span class="mt-line"><span class="nobr">まるごと</span><span class="nobr">サポートします</span></span>
         </h1>
       </div>
-      <!-- 画像エリア：PIXTA（95794004 または 79172774）をご購入後、下の行のように img を入れてください（images/ に画像を置く）
-           <img src="images/top.jpg" alt="メンテナンス事務局のイメージ"> -->
-      <div class="media-slot mt-top-slot" id="mediaSlot"><span class="ms-note">画像エリア</span></div>
+      <!-- 画像エリア（スライドショー3枚）：ご購入画像を images/ に置き、各 mt-slide の中に下の行のように img を入れてください
+           1枚目 PIXTA 95794004 → <img src="images/top1.jpg" alt="メンテナンス事務局のイメージ">
+           2枚目 PIXTA 139166339 → <img src="images/top2.jpg" alt="メンテナンス事務局のイメージ">
+           3枚目 PIXTA 79172774 → <img src="images/top3.jpg" alt="メンテナンス事務局のイメージ">
+           img を入れると「画像エリア」の文字は自動で消えます。約5秒ごとに切り替わります。 -->
+      <div class="media-slot mt-top-slot mt-slides" id="mediaSlot" aria-label="メンテナンス事務局のイメージ">
+        <div class="mt-slide on"><span class="ms-note">画像エリア 1／3</span></div>
+        <div class="mt-slide"><span class="ms-note">画像エリア 2／3</span></div>
+        <div class="mt-slide"><span class="ms-note">画像エリア 3／3</span></div>
+        <div class="mt-dots" role="group" aria-label="表示する画像">
+          <button type="button" class="on" aria-label="1枚目"></button><button type="button" aria-label="2枚目"></button><button type="button" aria-label="3枚目"></button>
+        </div>
+      </div>
     </div>
 
     <div class="mt-worry">
@@ -1088,10 +1114,10 @@ body{
         <li>メールの送受信ができなくなった</li>
       </ul>
       <div class="mt-btns">
-        <a class="btn mt-btn-talk" href="mailto:team-maintenance@science-web.online">ご相談はこちら ＞</a>
+        <a class="btn mt-btn-talk" href="mailto:maintenance@science-web.online">ご相談はこちら ＞</a>
         <a class="btn mt-btn-quote" href="#docs">お見積はこちら ＞</a>
       </div>
-      <p class="mt-tel"><span class="mt-tel-lbl">電話番号</span><a href="tel:05030387006">050-3038-7006</a><span class="mt-tel-time">受付時間：（平日10：00～17：00）</span></p>
+      <p class="mt-tel"><span class="mt-tel-lbl">電話番号</span><a href="tel:05035387006">050-3538-7006</a><span class="mt-tel-time">受付時間：（平日10：00～17：00）</span></p>
     </div>
   </div>
 </div>
@@ -1185,11 +1211,12 @@ body{
     <p class="sec-desc mt-desc">ご希望の内容に応じて、最適なプランをご提案します。<br>まずはお気軽にご相談ください。</p>
     <h3 class="sub-ttl">料金プラン</h3>
     <ul class="mt-plans">
-      <li class="mt-plan"><p class="mt-plan-name">3ヶ月プラン</p><p class="mt-plan-price"><span class="mt-blank">［　］</span>円／月</p></li>
-      <li class="mt-plan"><p class="mt-plan-name">6ヶ月プラン</p><p class="mt-plan-price"><span class="mt-blank">［　］</span>円／月</p></li>
-      <li class="mt-plan"><p class="mt-plan-name">年間プラン</p><p class="mt-plan-price"><span class="mt-blank">［　］</span>円／月</p></li>
-      <li class="mt-plan mt-plan-add"><p class="mt-plan-name">追加費用</p><p class="mt-plan-price"><span class="mt-blank">［　］</span>円／月</p></li>
+      <li class="mt-plan"><p class="mt-plan-name">3ヶ月プラン</p><p class="mt-plan-price"><span class="mt-num">40,000</span>円／月</p></li>
+      <li class="mt-plan"><p class="mt-plan-name">6ヶ月プラン</p><p class="mt-plan-price"><span class="mt-num">35,000</span>円／月</p><p class="mt-plan-free">初月無料サービス</p></li>
+      <li class="mt-plan"><p class="mt-plan-name">年間プラン</p><p class="mt-plan-price"><span class="mt-num">25,000</span>円／月</p><p class="mt-plan-free">初月無料サービス</p></li>
+      <li class="mt-plan mt-plan-add"><p class="mt-plan-name">追加費用</p><p class="mt-plan-price mt-plan-ask">相談いたします。</p></li>
     </ul>
+    <p class="mt-tax">※消費税別</p>
     <div class="mt-scope-grid">
       <div class="mt-scope">
         <h3 class="mt-scope-ttl">作業範囲</h3>
@@ -1205,8 +1232,8 @@ body{
       <div class="mt-scope mt-scope-add">
         <h3 class="mt-scope-ttl">追加費用</h3>
         <ul class="mt-dot">
-          <li>大規模な対応</li>
-          <li>特殊な設定変更</li>
+          <li>大規模な対応<span class="mt-from">200,000円から</span></li>
+          <li>特殊な設定変更<span class="mt-from">100,000円から</span></li>
         </ul>
       </div>
     </div>
@@ -1252,7 +1279,7 @@ body{
         <p class="mt-update">更新日：<time datetime="2026-10-26">2026年10月26日</time></p>
       </div>
       <div class="mt-point-btns">
-        <a class="btn mt-btn-talk" href="mailto:team-maintenance@science-web.online">ご相談はこちら ＞</a>
+        <a class="btn mt-btn-talk" href="mailto:maintenance@science-web.online">ご相談はこちら ＞</a>
         <a class="btn mt-btn-quote" href="#docs">お見積はこちら ＞</a>
       </div>
     </div>
@@ -1270,7 +1297,7 @@ body{
     <dl class="mt-ft-info">
       <div><dt>Webサイト</dt><dd><a href="https://science-web.online/maintenance/">https://science-web.online/maintenance/</a></dd></div>
       <div><dt>お問い合わせ</dt><dd><a href="mailto:team-maintenance@science-web.online">team-maintenance@science-web.online</a>　佐藤・永田</dd></div>
-      <div><dt>電話番号</dt><dd><a href="tel:05030387006">050-3038-7006</a>　受付時間：（平日10：00～17：00）</dd></div>
+      <div><dt>電話番号</dt><dd><a href="tel:05035387006">050-3538-7006</a>　受付時間：（平日10：00～17：00）</dd></div>
     </dl>
   </div>
   <div class="wrap mt-ft-co">
@@ -1303,6 +1330,22 @@ body{
       tg.setAttribute("aria-expanded","false");
     });
   }
+})();
+/* トップのスライドショー（約5秒ごと。動きを減らす設定のときは自動で切り替えない） */
+(function(){
+  var box=document.getElementById("mediaSlot"); if(!box) return;
+  var sl=box.querySelectorAll(".mt-slide"), dt=box.querySelectorAll(".mt-dots button"), i=0, tm=null;
+  function show(n){
+    i=(n+sl.length)%sl.length;
+    for(var k=0;k<sl.length;k++){ sl[k].className=(k===i)?"mt-slide on":"mt-slide"; if(dt[k]) dt[k].className=(k===i)?"on":""; }
+  }
+  function start(){
+    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    stop(); tm=setInterval(function(){ show(i+1); },5000);
+  }
+  function stop(){ if(tm){ clearInterval(tm); tm=null; } }
+  for(var k=0;k<dt.length;k++){ (function(n){ dt[n].addEventListener("click",function(){ show(n); start(); }); })(k); }
+  start();
 })();
 </script>
 </body>
