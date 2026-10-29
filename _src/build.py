@@ -8,7 +8,7 @@ import sys, os, json, re
 
 src, out = sys.argv[1], sys.argv[2]
 comp = '--comp' in sys.argv
-BUILD_TAG = 'swo2026_maintenance_ver2.1 / 2026-10-29'
+BUILD_TAG = 'swo2026_maintenance_ver2.2 / 2026-10-29'
 
 t = open(os.path.join(src, 'template.html'), encoding='utf-8').read()
 css = open(os.path.join(src, 'base_v1.css'), encoding='utf-8').read() + open(os.path.join(src, 'add.css'), encoding='utf-8').read()
