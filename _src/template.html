@@ -296,7 +296,7 @@
     });
   }
 })();
-/* トップのスライドショー（約5秒ごと。動きを減らす設定のときは自動で切り替えない） */
+/* トップのスライドショー（約5秒ごと。端末が「動きを減らす」設定のときは、ふわっと切り替えずにそのまま入れ替える） */
 (function(){
   var box=document.getElementById("mediaSlot"); if(!box) return;
   var sl=box.querySelectorAll(".mt-slide"), dt=box.querySelectorAll(".mt-dots button"), i=0, tm=null;
@@ -305,7 +305,6 @@
     for(var k=0;k<sl.length;k++){ sl[k].className=(k===i)?"mt-slide on":"mt-slide"; if(dt[k]) dt[k].className=(k===i)?"on":""; }
   }
   function start(){
-    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     stop(); tm=setInterval(function(){ show(i+1); },5000);
   }
   function stop(){ if(tm){ clearInterval(tm); tm=null; } }
