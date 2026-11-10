@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/images/:f(top1|top2|top3|case01|case02|case03).png", "destination": "https://science-web.online/maintenance/images/:f.png" }
+  ]
+}
